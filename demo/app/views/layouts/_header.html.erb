@@ -1,0 +1,31 @@
+<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="/">VivotekOverFlow</a>
+		</div>
+		<div>
+			<ul class="nav navbar-nav">
+				<li class="<%= active_class(root_path) %>"><%= link_to "Home", root_path %></li>
+				<li class="<%= active_class(welcome_about_path) %>"><%= link_to "About", welcome_about_path %></li>
+				<li class="<%= active_class(welcome_help_path) %>"><%= link_to "Help", welcome_help_path %></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<% if user_signed_in? %>
+					Signed in as <%= current_user.email %>. Not you?
+					<%= link_to "Sign out", destroy_user_session_path, :method => :delete, :class => 'btn btn-danger btn-mini' %>
+				<% else %>
+					<li>
+					<%= link_to new_user_registration_path do %>
+					<span class="glyphicon glyphicon-user"></span> Sign Up
+					<% end %>
+					</li>
+					<li>
+					<%= link_to new_user_session_path do %>
+					<span class="glyphicon glyphicon-log-in"></span> Login
+					<% end %>
+					</li>
+				<% end %>
+			</ul>
+		</div>
+	</div>
+</nav>
